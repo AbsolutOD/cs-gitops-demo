@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: url-shortener
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:909011746903:certificate/9d53d5f8-4d89-4227-8905-776b501bd770
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
