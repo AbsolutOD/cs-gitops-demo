@@ -1,0 +1,51 @@
+---
+name: Update URL Shortener Image Tag
+run-name: image tag updater
+
+on: 
+  workflow_call:
+    inputs:
+      image_tag:
+        required: true
+        type: string
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: url-shortener
+  DEPLOYMENT_MANIFEST: overlays/demo/deployment.yaml
+
+jobs:
+  update-demo-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list env vars
+        run: env
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      
+      - id: update-image
+        uses: Charlyzzz/update-k8s-image
+        with:
+          manifest-path: ${{ env.DEPLOYMENT_MANIFEST }}
+          new-image-tag: ${{ inputs.image_tag }}
+          name: url-shortener
+
+      # Example of using the output
+      - id: test
+        run: curl ${{ steps.update-image.outputs.old-image-tag }}
+
+      - name: git status
+        run: git status
+      # - name: setup git config
+      #   run: |
+      #     # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+      #     git config user.name "GitHub Actions Bot"
+      #     git config user.email "actions@"
+
+      # - name: commit
+      #   run: |
+      #     # Stage the file, commit and push
+      #     git add "${{ env.DEPLOYMENT_MANIFEST }}"
+      #     git commit -m "Updated overlay image tag"
+      #     git push origin main
