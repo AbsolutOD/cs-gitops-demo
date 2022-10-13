@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: url-shortener
-        image: url-shortener:1.14.2
+        image: ghcr.io/absolutod/url-shortener:80d05fa
         ports:
-        - containerPort: 8000
+        - containerPort: 80
