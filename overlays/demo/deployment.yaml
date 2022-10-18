@@ -9,6 +9,6 @@ spec:
         - name: ghcr-login-secret
       containers:
         - name: url-shortener
-          image: ghcr.io/absolutod/url-shortener:c149686
+          image: ghcr.io/absolutod/url-shortener:b7ccb3e
           ports:
             - containerPort: 80
