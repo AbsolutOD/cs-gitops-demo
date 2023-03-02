@@ -6,4 +6,4 @@ bases:
 
 patchesStrategicMerge:
   - deployment.yaml
-  - service.yaml
+  #- service.yaml
