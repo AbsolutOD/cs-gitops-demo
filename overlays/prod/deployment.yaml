@@ -12,3 +12,8 @@ spec:
           image: quay.io/matt_odonnell/shortly:1
           ports:
             - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: shortly
+            - secretRef:
+                name: shortly
