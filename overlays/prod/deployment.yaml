@@ -9,7 +9,7 @@ spec:
         - name: ghcr-login-secret
       containers:
         - name: shortly
-          image: quay.io/matt_odonnell/shortly:594f5b1
+          image: quay.io/matt_odonnell/shortly:33574cb
           ports:
             - containerPort: 80
           envFrom:
